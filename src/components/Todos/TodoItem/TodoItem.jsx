@@ -1,11 +1,11 @@
-import RadioButton from '../../common/RadioButton/RadioButton'
+import Checkbox from '../../common/Checkbox/Checkbox'
 import './TodoItem.css'
 
 const TodoItem = () => {
   return (
     <div className='todo-item'>
       <div className='todo-item__radio'>
-        <RadioButton />
+        <Checkbox />
       </div>
 
       <div className="todo-item__text">

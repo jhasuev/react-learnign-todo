@@ -30,3 +30,33 @@
   bottom: -10px;
   z-index: -2;
 }
+
+.todos__text-field {
+  border-bottom: 2px solid #eee;
+  padding-left: 30px;
+}
+
+.todos__list-item {
+  border-bottom: 1px solid #ddd;
+}
+.todos__list-item:last-child {
+  border-bottom: none;
+}
+
+.todos__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  border-top: 2px solid #ddd;
+}
+
+.todos__footer-left-items-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.todos__footer-navbar-item {
+  margin: 0 4px;
+}

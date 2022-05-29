@@ -3,7 +3,7 @@ import './InputField.css'
 const InputField = () => {
   return (
     <div className='input-field'>
-      input "Шо делать будем ?"s
+      <input className='input-field__input' type="text" placeholder="Шо делать будем ?" />
     </div>
   )
 }

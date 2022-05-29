@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: inherit;
 }
 
 *:before,
@@ -10,7 +11,8 @@
 }
 
 body {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
   font-size: 18px;
 }
 
@@ -18,6 +20,7 @@ body {
   background-color: #F4F4F4;
   min-height: 100vh;
   padding: 15px;
+  padding-top: 50px;
 }
 
 .app__title {
@@ -27,5 +30,19 @@ body {
 }
 
 .app__todos {
-  margin-top: 50px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 5px 5px;
+  font-size: 14px;
+  color: #666;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn--bordered {
+  border: 1px solid #999;
+  border-radius: 3px;
 }

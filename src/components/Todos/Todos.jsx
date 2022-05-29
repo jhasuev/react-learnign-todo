@@ -5,24 +5,32 @@ import TodoItem from './TodoItem/TodoItem'
 const Todos = () => {
   return (
     <div className='todos'>
-      <InputField />
+      <div className="todos__text-field">
+        <InputField />
+      </div>
 
       <div className='todos__list'>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        <div className="todos__list-item">
+          <TodoItem />
+        </div>
+        <div className="todos__list-item">
+          <TodoItem />
+        </div>
+        <div className="todos__list-item">
+          <TodoItem />
+        </div>
       </div>
 
 
-      <div className="footer">
-        <div className="footer__left-items-text">
+      <div className="todos__footer">
+        <div className="todos__footer-left-items-text">
           1 item left
         </div>
 
-        <div className="footer__navbar">
-          <button className='footer__navbar-item btn btn--bordered'>All</button>
-          <button className='footer__navbar-item btn btn--bordered'>Active</button>
-          <button className='footer__navbar-item btn'>Completed</button>
+        <div className="todos__footer-navbar">
+          <button className='todos__footer-navbar-item btn btn--bordered'>All</button>
+          <button className='todos__footer-navbar-item btn btn--bordered'>Active</button>
+          <button className='todos__footer-navbar-item btn'>Completed</button>
         </div>
 
         <button className='btn'>Clear Complete</button>
