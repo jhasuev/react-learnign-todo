@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*:before,
+*:after,
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.app {
+  background-color: #F4F4F4;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.app__title {
+  color: #E5CED0;
+  text-align: center;
+  font-size: 36px;
+}
+
+.app__todos {
+  margin-top: 50px;
+}
