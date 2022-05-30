@@ -1,5 +1,5 @@
 import Todos from './components/Todos/Todos';
-import './styles/App.css'
+import './App.css'
 
 function App() {
   return (

@@ -1,6 +1,4 @@
-.input-field {}
-
-.input-field__input {
+.input-field {
   border: none;
   display: block;
   width: 100%;
@@ -12,6 +10,5 @@
 }
 
 ::placeholder {
-  font-style: italic;
   color: rgba(0,0,0,.25);
 }

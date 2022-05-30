@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import './Todos.css'
 import InputField from '../UI/InputField/InputField'
 import TodoItem from './TodoItem/TodoItem'
@@ -47,13 +47,10 @@ const Todos = () => {
   const [showingType, setShowingType] = useState('all')
 
   const filteredTodos = useMemo(() => {
-    if (showingType === 'active') {
-      return incompletedTodos
-    } else if (showingType === 'completed') {
-      return completedTodos
-    }
-
-    return todos
+    return {
+      active: incompletedTodos,
+      completed: completedTodos,
+    }[showingType] ?? todos
   }, [todos, showingType, incompletedTodos, completedTodos])
 
   const onChangeShowingType = (type) => {
@@ -61,8 +58,14 @@ const Todos = () => {
   }
 
   const clearCompletedTodos = () => {
-    setTodos([...todos.filter(todo => !todo.done)])
+    setTodos(todos.filter(todo => !todo.done))
   }
+
+  useEffect(() => {
+    if (!filteredTodos.length) {
+      setShowingType('all')
+    }
+  }, [filteredTodos])
 
   return (
     <div className='todos'>
