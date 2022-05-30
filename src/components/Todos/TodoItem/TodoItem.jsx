@@ -1,9 +1,11 @@
 import Checkbox from '../../UI/Checkbox/Checkbox'
 import './TodoItem.css'
 
-const TodoItem = ({todo, onDone, ...props}) => {
+const TodoItem = ({todo, onDone, className, ...props}) => {
   return (
-    <div className='todo-item'>
+    <div
+      className={`todo-item ${ className }`}
+    >
       <div className='todo-item__radio'>
         <Checkbox
           checked={todo.done}
@@ -11,7 +13,14 @@ const TodoItem = ({todo, onDone, ...props}) => {
         />
       </div>
 
-      <div className={'todo-item__text' + (todo.done ? ' todo-item__text--done' : '')}>
+      <div
+        className={
+          `
+            todo-item__text
+            ${ todo.done ? ' todo-item__text--done' : '' }
+          `
+        }
+      >
         {todo.title}
       </div>
     </div>

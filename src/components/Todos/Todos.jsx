@@ -77,15 +77,21 @@ const Todos = () => {
         />
       </div>
 
-      <div className='todos__list'>
-        {filteredTodos.map(todo => (
-          <TodoItem
-            todo={todo}
-            key={todo.id}
-            onDone={onDone}
-          />
-        ))}
-      </div>
+      {
+        filteredTodos.length
+        ?
+          <div className='todos__list'>
+            {filteredTodos.map(todo => (
+              <TodoItem
+                className="todos__list-item"
+                todo={todo}
+                key={todo.id}
+                onDone={onDone}
+              />
+            ))}
+          </div>
+        : <div className='todos__no-todos-text'>There is no todos yet...</div>
+      }
 
       <div className="todos__footer">
         <div className="todos__footer-left-items-text">
