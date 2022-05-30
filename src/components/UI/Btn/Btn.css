@@ -1,0 +1,13 @@
+.btn {
+  padding: 5px 5px;
+  font-size: 14px;
+  color: #666;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn--bordered {
+  border: 1px solid #999;
+  border-radius: 3px;
+}

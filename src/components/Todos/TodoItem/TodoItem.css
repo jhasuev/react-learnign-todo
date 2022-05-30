@@ -10,3 +10,8 @@
 .todo-item__text {
   font-size: 15px;
 }
+
+.todo-item__text--done {
+  text-decoration: line-through;
+  font-style: italic;
+}
