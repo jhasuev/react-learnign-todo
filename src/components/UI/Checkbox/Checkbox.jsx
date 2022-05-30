@@ -1,9 +1,13 @@
 import './Checkbox.css'
 
-const Checkbox = () => {
+const Checkbox = ({...props}) => {
   return (
     <label className='checkbox'>
-      <input type="checkbox" className="checkbox__field" />
+      <input
+        type="checkbox"
+        className="checkbox__field"
+        { ...props }
+      />
       <div className="checkbox__icon"></div>
     </label>
   )

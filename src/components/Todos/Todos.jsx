@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import './Todos.css'
 import InputField from '../UI/InputField/InputField'
 import TodoItem from './TodoItem/TodoItem'
@@ -28,6 +28,42 @@ const Todos = () => {
     setTodoText('')
   }
 
+  const onDone = (todoId, done) => {
+    todos.map(todo => {
+      if (todo.id === todoId) {
+        todo.done = done
+      }
+
+      return todo
+    })
+
+    setTodos([...todos])
+  }
+
+  const itemsCount = useMemo(() => todos.length, [todos])
+  const incompletedTodos = useMemo(() => todos.filter(todo => !todo.done), [todos])
+  const completedTodos = useMemo(() => todos.filter(todo => todo.done), [todos])
+
+  const [showingType, setShowingType] = useState('all')
+
+  const filteredTodos = useMemo(() => {
+    if (showingType === 'active') {
+      return incompletedTodos
+    } else if (showingType === 'completed') {
+      return completedTodos
+    }
+
+    return todos
+  }, [todos, showingType, incompletedTodos, completedTodos])
+
+  const onChangeShowingType = (type) => {
+    setShowingType(type)
+  }
+
+  const clearCompletedTodos = () => {
+    setTodos([...todos.filter(todo => !todo.done)])
+  }
+
   return (
     <div className='todos'>
       <div className="todos__text-field">
@@ -39,23 +75,52 @@ const Todos = () => {
       </div>
 
       <div className='todos__list'>
-        {todos.map(todo => (
-          <TodoItem todo={todo} key={todo.id} />
+        {filteredTodos.map(todo => (
+          <TodoItem
+            todo={todo}
+            key={todo.id}
+            onDone={onDone}
+          />
         ))}
       </div>
 
       <div className="todos__footer">
         <div className="todos__footer-left-items-text">
-          1 item left
+          {incompletedTodos.length} item left
         </div>
 
         <div className="todos__footer-navbar">
-          <Btn className="todos__footer-navbar-item" bordered={true}>All</Btn>
-          <Btn className="todos__footer-navbar-item" bordered={false}>Active</Btn>
-          <Btn className="todos__footer-navbar-item" bordered={true}>Completed</Btn>
+          <Btn
+            className="todos__footer-navbar-item"
+            bordered={showingType === 'all'}
+            onClick={() => onChangeShowingType('all')}
+          >All</Btn>
+
+          { incompletedTodos.length && itemsCount >= incompletedTodos.length
+            ? 
+            <Btn
+              className="todos__footer-navbar-item"
+              bordered={showingType === 'active'}
+              onClick={() => onChangeShowingType('active')}
+            >Active</Btn>
+            : ''
+          }
+          { completedTodos.length
+            ? 
+            <Btn
+              className="todos__footer-navbar-item"
+              bordered={showingType === 'completed'}
+              onClick={() => onChangeShowingType('completed')}
+            >Completed</Btn>
+            : ''
+          }
         </div>
 
-        <Btn>Clear Complete</Btn>
+        { completedTodos.length
+          ? 
+          <Btn onClick={clearCompletedTodos}>Clear Complete</Btn>
+          : ''
+        }
       </div>
     </div>
   )
